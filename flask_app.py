@@ -1,7 +1,12 @@
 
 from flask import Flask, render_template
 from pymongo import MongoClient
+import requests
+from dotenv import load_dotenv
 import os
+
+
+load_dotenv(dotenv_path='.env')
 
 app = Flask(__name__)
 
@@ -20,6 +25,11 @@ def index():
         news_data.append({'title':objects['title'],'Sentiment':objects['Sentiment']})
     
     return render_template('index.html',news_data = news_data)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 
 
